@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    lock.h
- * @brief   Í¬²½ËøµÄ·â×°
+ * @brief   åŒæ­¥é”çš„å°è£…
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-7-5
  * @website www.xiangwangfeng.com

@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_response.h
- * @brief   Http·´À¡
+ * @brief   Httpåé¦ˆ
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-24
  * @website www.xiangwangfeng.com
@@ -13,15 +13,15 @@
 
 NAMESPACE_BEGIN(Http)
 
-//Http·´À¡
+//Httpåé¦ˆ
 class HTTP_CLASS HttpResponse
 {
 public:
 	HttpResponse():_http_code(-1) {}
 public:
-	int						getHttpCode()	const		{	return	_http_code;}//·´À¡µÄHTTP×´Ì¬Âï
-	const	std::string&	getHeader()	const			{	return	_header;}	//HTTPÏûÏ¢Í·
-	const	std::string&	getBody()	const			{	return	_body;}		//HTTPÏûÏ¢Ìå£¬Èç¹ûÇëÇóÊÇÒÔÎÄ¼şµÄĞÎÊ½±»ÏÂÔØµÄ£¬ÕâÀï·ÅµÄÎÄ¼şÂ·¾¶(UTF±àÂë)
+	int						getHttpCode()	const		{	return	_http_code;}//åé¦ˆçš„HTTPçŠ¶æ€å˜›
+	const	std::string&	getHeader()	const			{	return	_header;}	//HTTPæ¶ˆæ¯å¤´
+	const	std::string&	getBody()	const			{	return	_body;}		//HTTPæ¶ˆæ¯ä½“ï¼Œå¦‚æœè¯·æ±‚æ˜¯ä»¥æ–‡ä»¶çš„å½¢å¼è¢«ä¸‹è½½çš„ï¼Œè¿™é‡Œæ”¾çš„æ–‡ä»¶è·¯å¾„(UTFç¼–ç )
 	
 private:
 	void	setHttpCode(int	http_code)				{	_http_code	=	http_code;}
@@ -29,9 +29,9 @@ private:
 	void	setHeader(const	std::string&	header)	{	_header	=	header;}
 
 private:
-	std::string		_header;					//HttpÍ·
-	std::string		_body;						//HttpÌå
-	int				_http_code;					//Http·µ»ØÂë
+	std::string		_header;					//Httpå¤´
+	std::string		_body;						//Httpä½“
+	int				_http_code;					//Httpè¿”å›ç 
 	friend	class	HttpClient;
 };
 

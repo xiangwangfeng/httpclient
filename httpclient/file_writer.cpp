@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    file_writer.h
- * @brief   Ğ´ÎÄ¼şWrapperÀà
+ * @brief   å†™æ–‡ä»¶Wrapperç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-25
  * @website www.xiangwangfeng.com

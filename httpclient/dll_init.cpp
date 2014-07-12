@@ -1,6 +1,6 @@
-/**
+О╩©/**
  * @file    dll_init.cpp
- * @brief   DLL╪стьп╤ть╧ЩЁл
+ * @brief   DLLЕ┼═Х╫╫Е█╦Х╫╫Х©┤Г╗▀
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-7-5
  * @website www.xiangwangfeng.com

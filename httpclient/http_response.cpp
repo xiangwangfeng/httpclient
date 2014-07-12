@@ -1,6 +1,6 @@
-/**
+Ôªø/**
  * @file    http_response.cpp
- * @brief   Http∑¥¿°
+ * @brief   HttpÂèçÈ¶à
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-24
  * @website www.xiangwangfeng.com
@@ -11,6 +11,6 @@
 
 NAMESPACE_BEGIN(Http)
 
-//ø’...
+//Á©∫...
 
 NAMESPACE_END(Http)

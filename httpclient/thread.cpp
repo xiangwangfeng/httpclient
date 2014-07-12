@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    thread.cpp
- * @brief   Ïß³Ì·â×°
+ * @brief   çº¿ç¨‹å°è£…
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-7-6
  * @website www.xiangwangfeng.com
@@ -45,7 +45,7 @@ unsigned int	__stdcall	Thread::ThreadProc(void *data)
 
 void	Thread::enterThread()
 {
-	setThreadName();	//ÉèÖÃµ±Ç°ThreadÃû×Ö£¬·½±ãµ÷ÊÔ
+	setThreadName();	//è®¾ç½®å½“å‰Threadåå­—ï¼Œæ–¹ä¾¿è°ƒè¯•
 	run();				
 }
 

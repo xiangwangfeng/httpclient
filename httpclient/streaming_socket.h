@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    streaming_socket.h
- * @brief   ¶ÔÔ­ÉúWinSocketµÄ·â×°Àà
+ * @brief   å¯¹åŸç”ŸWinSocketçš„å°è£…ç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-23
  * @website www.xiangwangfeng.com
@@ -12,7 +12,7 @@
 
 NAMESPACE_BEGIN(Http)
 
-//¶ÔÔ­ÉúSOCKETµÄ·â×°
+//å¯¹åŸç”ŸSOCKETçš„å°è£…
 class HTTP_CLASS StreamingSocket
 {
 public:
@@ -35,9 +35,9 @@ public:
 private:
 	bool	resetSocketOptions();
 private:
-	std::string		_host_name;				//Ä¿±êµØÖ·
-	int	volatile	_port_number,_handle;	//¶Ë¿ÚºÅ£¬SOCKET
-	bool			_connected;				//ÊÇ·ñÒÑÁ¬½Ó
+	std::string		_host_name;				//ç›®æ ‡åœ°å€
+	int	volatile	_port_number,_handle;	//ç«¯å£å·ï¼ŒSOCKET
+	bool			_connected;				//æ˜¯å¦å·²è¿æ¥
 	
 };
 

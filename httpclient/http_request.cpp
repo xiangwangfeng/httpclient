@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_request.cpp
- * @brief   HttpÇëÇó
+ * @brief   Httpè¯·æ±‚
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-24
  * @website www.xiangwangfeng.com
@@ -75,7 +75,7 @@ void	HttpRequest::addHeaderField(const std::string &name, const std::string &val
 		std::string& header_name	=	_header_fields[i]._field_name;
 		if (_strcmpi(header_name.c_str(),name.c_str()) == 0)
 		{
-			//ÖØÃû×Ö¶ÎÖ±½ÓÓÃĞÂÖµ´úÌæ¾ÉÖµ
+			//é‡åå­—æ®µç›´æ¥ç”¨æ–°å€¼ä»£æ›¿æ—§å€¼
 			_header_fields[i]._field_value	=	value;
 			return;
 		}
@@ -93,7 +93,7 @@ void	HttpRequest::addFile(const std::string& name,IHttpPostFile*	post_file)
 		const std::string&	add_name	=	_post_files[i]->_name;
 		if (_strcmpi(name.c_str(),add_name.c_str()) == 0)
 		{
-			//²»ÔÊĞíÖØÃû
+			//ä¸å…è®¸é‡å
 			assert(false);
 			return;
 		}
@@ -108,7 +108,7 @@ void	HttpRequest::initDefaultValue()
 {
 	_http_method	=	kget;
 	
-	//Ìí¼ÓÒ»Ğ©Ä¬ÈÏHttpÍ·×Ö¶Î
+	//æ·»åŠ ä¸€äº›é»˜è®¤Httpå¤´å­—æ®µ
 	_header_fields.push_back(HttpField(kaccept,"*/*"));
 	_header_fields.push_back(HttpField(kconnection,"Keep-Alive"));
 }
@@ -119,24 +119,24 @@ int		HttpRequest::generateHeader(std::string& header)
 	header.clear();
 
 
-	//ÇëÇó·½·¨ºÍÊµÌå
+	//è¯·æ±‚æ–¹æ³•å’Œå®ä½“
 	header.append(_http_method+" ");
 	header.append(_object);
 	header.append(" HTTP/1.1\r\n");
 
-	//Ö÷»ú
+	//ä¸»æœº
 	header.append("Host:");
 	header.append(_http_host);
 	header.append("\r\n");
 
 
-	//¼ÆËãBodyµÄ³¤¶È£¬¸³Öµ¸øContentLength
+	//è®¡ç®—Bodyçš„é•¿åº¦ï¼Œèµ‹å€¼ç»™ContentLength
 	if (_stricmp(_http_method.c_str(),kpost) == 0)
 	{
 		calcBody();
 	}
 
-	//Ìí¼ÓHeader Field
+	//æ·»åŠ Header Field
 	size_t	field_size	=	_header_fields.size();
 	for (size_t i = 0; i < field_size; i ++)
 	{
@@ -145,10 +145,10 @@ int		HttpRequest::generateHeader(std::string& header)
 		header.append(name	+	": " +	value	+	"\r\n");
 	}
 	
-	//Ìí¼Ó×îºóÒ»¸ö\r\n
+	//æ·»åŠ æœ€åä¸€ä¸ª\r\n
 	header.append("\r\n");
 
-	///·µ»Ø½á¹û
+	///è¿”å›ç»“æœ
 	return (int)header.size(); 
 }
 
@@ -158,11 +158,11 @@ void	HttpRequest::calcBody()
 	{
 		genBoundary();
 
-		int length = 0; //¼ÆËãContent-Length
+		int length = 0; //è®¡ç®—Content-Length
 		_body.clear();
 
 
-		//Ìí¼ÓFields
+		//æ·»åŠ Fields
 		for (size_t i = 0; i < _body_fields.size(); i++)
 		{
 			const std::string&	name	=	_body_fields[i]._field_name;
@@ -174,7 +174,7 @@ void	HttpRequest::calcBody()
 		}
 		length	=	(int)_body.size();
 
-		//Ìí¼ÓFiles
+		//æ·»åŠ Files
 		for (size_t i = 0; i < _post_files.size(); i++)
 		{
 			std::string name			=	_post_files[i]->_name;
@@ -186,13 +186,13 @@ void	HttpRequest::calcBody()
 											"\r\n";
 			length			+= (int)post_part.size();
 			length			+= post_file->getFileSize();
-			length			+= 2;						//ÔÚÎÄ¼şºóĞèÒªÌí¼Ó\r\n
+			length			+= 2;						//åœ¨æ–‡ä»¶åéœ€è¦æ·»åŠ \r\n
 		}
 
 		std::string post_end = "--" + _boundary + "--\r\n";
 		length += (int)post_end.size();
 
-		//Ìí¼ÓContent-TypeºÍContent-Length×Ö¶Î
+		//æ·»åŠ Content-Typeå’ŒContent-Lengthå­—æ®µ
 		std::string	content_type = "multipart/form-data; boundary=" + _boundary;
 		addHeaderField(kcontent_type,content_type);
 		std::string	content_length	=	Util::num_to_string(length);
@@ -200,7 +200,7 @@ void	HttpRequest::calcBody()
 	}
 	else
 	{
-		//Èç¹ûÃ»ÓĞÖ±½ÓÉèÖÃHttpÌå£¬ÔòÒÔFieldµÄĞÎÊ½¹¹ÔìHTTPÌå
+		//å¦‚æœæ²¡æœ‰ç›´æ¥è®¾ç½®Httpä½“ï¼Œåˆ™ä»¥Fieldçš„å½¢å¼æ„é€ HTTPä½“
 		if (_body.empty())
 		{
 			for (size_t i = 0 ; i < _body_fields.size(); i++)
@@ -255,7 +255,7 @@ void	HttpRequest::addExtraHeaderField(const std::string& name,const std::string&
 		std::string& header_name	=	_header_fields[i]._field_name;
 		if (_strcmpi(header_name.c_str(),name.c_str()) == 0)
 		{
-			//Èç¹ûÒÑ¾­ÓĞÍ¬ÃûµÄheader Ö±½Ó·µ»Ø ²»Ìí¼Óheader field
+			//å¦‚æœå·²ç»æœ‰åŒåçš„header ç›´æ¥è¿”å› ä¸æ·»åŠ header field
 			return;
 		}
 	}

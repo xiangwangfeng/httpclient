@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_post_file.cpp
- * @brief   ÓÃÓÚHTTP POSTµÄÎÄ¼ş½Ó¿Ú¶¨Òå 
+ * @brief   ç”¨äºHTTP POSTçš„æ–‡ä»¶æ¥å£å®šä¹‰ 
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-26
  * @website www.xiangwangfeng.com
@@ -37,7 +37,7 @@ bool	HttpFileStream::postFile(FilePoster& file_poster)
 		Util::FileReader	file_reader(_filepath);
 		if (file_reader.open())
 		{
-			int file_size = getFileSize();	//²»Ö§³Ö´óÎÄ¼ş
+			int file_size = getFileSize();	//ä¸æ”¯æŒå¤§æ–‡ä»¶
 			if (file_size > 0)
 			{
 				int unsend_data = file_size;

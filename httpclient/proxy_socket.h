@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    proxy_socket.h
- * @brief   Ö§³Ö´úÀíµÄSocketÀà
+ * @brief   æ”¯æŒä»£ç†çš„Socketç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-23
  * @website www.xiangwangfeng.com
@@ -13,7 +13,7 @@
 
 NAMESPACE_BEGIN(Http)
 
-//Ö§³Ö´úÀíµÄSocketÀà·â×°
+//æ”¯æŒä»£ç†çš„Socketç±»å°è£…
 class HTTP_CLASS ProxySocket
 {
 public:
@@ -29,7 +29,7 @@ public:
 	bool	isConnected()	const	{	return	_socket.isConnected();}
 	int		read(char* dst_buffer,int max_read_length);
 	int		write(const char* source_buffer,int max_write_length);
-	bool	writeAll(const char* source_buffer,int max_write_length);	//È·±£ËùÓĞÊı¾İ¶¼±»·¢ËÍ
+	bool	writeAll(const char* source_buffer,int max_write_length);	//ç¡®ä¿æ‰€æœ‰æ•°æ®éƒ½è¢«å‘é€
 	void	close();
 private:
 	bool	handShakeWithHttpProxy();

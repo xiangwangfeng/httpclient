@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    proxy_socket.cpp
- * @brief   Ö§³Ö´úÀíµÄSocketÀà
+ * @brief   æ”¯æŒä»£ç†çš„Socketç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-23
  * @website www.xiangwangfeng.com
@@ -12,7 +12,7 @@
 #include "util.h"
 #include "socket_helper.h"
 
-#pragma pack(1)	//1×Ö½ÚÄÚ´æ¶ÔÆëÄ£Ê½(´úÀí´«Êä¶¼ÊÇÒÔ½á¹¹ÌåÖ±½Ó×ª»»³É×Ö½ÚÁ÷£¬ËùÒÔ±ØĞë1×Ö½Ú¶ÔÆë)
+#pragma pack(1)	//1å­—èŠ‚å†…å­˜å¯¹é½æ¨¡å¼(ä»£ç†ä¼ è¾“éƒ½æ˜¯ä»¥ç»“æ„ä½“ç›´æ¥è½¬æ¢æˆå­—èŠ‚æµï¼Œæ‰€ä»¥å¿…é¡»1å­—èŠ‚å¯¹é½)
 
 NAMESPACE_BEGIN(Http)
 
@@ -130,13 +130,13 @@ bool	ProxySocket::handShakeWithHttpProxy()
 					_host_name.c_str(),_port_number,_host_name.c_str(),_port_number);
 	}
 
-	//·¢ËÍHTTP´úÀíÁ¬½ÓÇëÇó
+	//å‘é€HTTPä»£ç†è¿æ¥è¯·æ±‚
 	bool send_connect_request = _socket.writeAll(buff,strlen(buff));
 	if (!send_connect_request)
 	{
 		return false;
 	}
-	//»ñµÃHTTP´úÀí»Ø¸´
+	//è·å¾—HTTPä»£ç†å›å¤
 	int ret = _socket.read(buff,sizeof(buff));
 	if (ret <= 0)
 	{
@@ -150,14 +150,14 @@ bool	ProxySocket::handShakeWithHttpProxy()
 
 bool	ProxySocket::handShakeWithSock4Proxy()
 {
-	//Socks4Ã»ÓĞÓÃ»§ÃÜÂëÑéÖ¤
+	//Socks4æ²¡æœ‰ç”¨æˆ·å¯†ç éªŒè¯
 	struct Sock4Reqeust 
 	{ 
 		char VN; 
 		char CD; 
 		unsigned short port; 
 		unsigned long ip_address; 
-		char other[256]; // ±ä³¤
+		char other[256]; // å˜é•¿
 	} sock4_request; 
 
 	struct Sock4Reply 
@@ -168,8 +168,8 @@ bool	ProxySocket::handShakeWithSock4Proxy()
 		unsigned long ip_address; 
 	} sock4_reply; 
 
-	sock4_request.VN = 0x04; // VNÊÇSOCK°æ±¾£¬Ó¦¸ÃÊÇ4£»
-	sock4_request.CD = 0x01; // CDÊÇSOCKµÄÃüÁîÂë£¬1±íÊ¾CONNECTÇëÇó£¬2±íÊ¾BINDÇëÇó£»
+	sock4_request.VN = 0x04; // VNæ˜¯SOCKç‰ˆæœ¬ï¼Œåº”è¯¥æ˜¯4ï¼›
+	sock4_request.CD = 0x01; // CDæ˜¯SOCKçš„å‘½ä»¤ç ï¼Œ1è¡¨ç¤ºCONNECTè¯·æ±‚ï¼Œ2è¡¨ç¤ºBINDè¯·æ±‚ï¼›
 	sock4_request.port= ntohs(_port_number);
 	sock4_request.ip_address = SocketHelper::getIntAddress(_host_name.c_str());
 	sock4_request.other[0] = '\0';
@@ -177,24 +177,24 @@ bool	ProxySocket::handShakeWithSock4Proxy()
 	if (sock4_request.ip_address == INADDR_NONE)
 		return false;
 
-	//·¢ËÍSOCKS4Á¬½ÓÇëÇó
+	//å‘é€SOCKS4è¿æ¥è¯·æ±‚
 	bool send_sock4_requst =  _socket.writeAll((char*)&sock4_request,9);          
 	if (!send_sock4_requst)
 	{
 		return false;
 	}
-	//»ñµÃSocks4´úÀíµÄ»Ø¸´
+	//è·å¾—Socks4ä»£ç†çš„å›å¤
 	int ret = _socket.read((char *)&sock4_reply, sizeof(sock4_reply));
 	if (ret <= 0)
 	{			
 		return false;
 	}
 	/*
-	CDÊÇ´úÀí·şÎñÆ÷´ğ¸´£¬ÓĞ¼¸ÖÖ¿ÉÄÜ£º
-	90£¬ÇëÇóµÃµ½ÔÊĞí£»
-	91£¬ÇëÇó±»¾Ü¾ø»òÊ§°Ü£»
-	92£¬ÓÉÓÚSOCKS·şÎñÆ÷ÎŞ·¨Á¬½Óµ½¿Í»§¶ËµÄidentd£¨Ò»¸öÑéÖ¤Éí·İµÄ½ø³Ì£©£¬ÇëÇó±»¾Ü¾ø£»
-	93£¬ÓÉÓÚ¿Í»§¶Ë³ÌĞòÓëidentd±¨¸æµÄÓÃ»§Éí·İ²»Í¬£¬Á¬½Ó±»¾Ü¾ø¡£
+	CDæ˜¯ä»£ç†æœåŠ¡å™¨ç­”å¤ï¼Œæœ‰å‡ ç§å¯èƒ½ï¼š
+	90ï¼Œè¯·æ±‚å¾—åˆ°å…è®¸ï¼›
+	91ï¼Œè¯·æ±‚è¢«æ‹’ç»æˆ–å¤±è´¥ï¼›
+	92ï¼Œç”±äºSOCKSæœåŠ¡å™¨æ— æ³•è¿æ¥åˆ°å®¢æˆ·ç«¯çš„identdï¼ˆä¸€ä¸ªéªŒè¯èº«ä»½çš„è¿›ç¨‹ï¼‰ï¼Œè¯·æ±‚è¢«æ‹’ç»ï¼›
+	93ï¼Œç”±äºå®¢æˆ·ç«¯ç¨‹åºä¸identdæŠ¥å‘Šçš„ç”¨æˆ·èº«ä»½ä¸åŒï¼Œè¿æ¥è¢«æ‹’ç»ã€‚
 	*/
 	return sock4_reply.CD == 90;
 }
@@ -203,7 +203,7 @@ bool	ProxySocket::handShakeWithSock5Proxy()
 {
 	char buff[kmax_file_buffer_size] = {0};
 
-	//µÚÒ»´ÎÇëÇó£ºÑéÖ¤ÓÃ»§
+	//ç¬¬ä¸€æ¬¡è¯·æ±‚ï¼šéªŒè¯ç”¨æˆ·
 	struct FirstSock5Request 
 	{
 		char version; 
@@ -211,7 +211,7 @@ bool	ProxySocket::handShakeWithSock5Proxy()
 		char methods[255];
 	} first_sock5_request; 
 	first_sock5_request.version		= 0x05;			// socks5
-	first_sock5_request.method		= 0x02;			// ÑéÖ¤·½Ê½µÄ×ÜÊı
+	first_sock5_request.method		= 0x02;			// éªŒè¯æ–¹å¼çš„æ€»æ•°
 	first_sock5_request.methods[0]	= 0x00;			// NO AUTHENTICATION REQUIRED
 	first_sock5_request.methods[1]	= 0x02;			// USERNAME/PASSWORD
 
@@ -221,7 +221,7 @@ bool	ProxySocket::handShakeWithSock5Proxy()
 		return false;
 	}
 
-	// µÚÒ»´ÎÓ¦´ğ
+	// ç¬¬ä¸€æ¬¡åº”ç­”
 	struct FirstSock5Answer 
 	{ 
 		char version; 
@@ -234,16 +234,16 @@ bool	ProxySocket::handShakeWithSock5Proxy()
 		return false;
 	}
 
-	// ĞèÒªÓÃ»§ÃûºÍÃÜÂëÑéÖ¤
+	// éœ€è¦ç”¨æˆ·åå’Œå¯†ç éªŒè¯
 	if (first_sock5_answer.method == 0x02)
 	{
 		struct AuthRequest 
 		{ 
 			char version; 
 			char name_length; 
-			char name[255];			// ±ä³¤
+			char name[255];			// å˜é•¿
 			char password_length; 
-			char password[255];		// ±ä³¤
+			char password[255];		// å˜é•¿
 		};
 		AuthRequest * auth_request = (AuthRequest *)buff;
 		int auth_length = 0;
@@ -278,7 +278,7 @@ bool	ProxySocket::handShakeWithSock5Proxy()
 		}
 	}
 
-	// µÚ¶ş´ÎÇëÇó£ºÁ¬½ÓÄ¿±êµØÖ·
+	// ç¬¬äºŒæ¬¡è¯·æ±‚ï¼šè¿æ¥ç›®æ ‡åœ°å€
 	struct SecondSock5Request 
 	{ 
 		char version; 
@@ -288,7 +288,7 @@ bool	ProxySocket::handShakeWithSock5Proxy()
 		unsigned long	dest_address;
 		unsigned short	dest_port;
 	} second_sock5_request;
-	second_sock5_request.version		= 0x05; // socks°æ±¾
+	second_sock5_request.version		= 0x05; // socksç‰ˆæœ¬
 	second_sock5_request.command		= 0x01; // CONNECT X'01', BIND X'02', UDP ASSOCIATE X'03'
 	second_sock5_request.reserved		= 0x00; // RESERVED
 	second_sock5_request.address_type	= 0x01; // IP V4 address: X'01', DOMAINNAME: X'03', IP V6 address: X'04'
@@ -304,7 +304,7 @@ bool	ProxySocket::handShakeWithSock5Proxy()
 		return false;
 	}
 
-	// µÚ¶ş´ÎÓ¦´ğ
+	// ç¬¬äºŒæ¬¡åº”ç­”
 	struct SecondSock5Answer 
 	{ 
 		char version; 

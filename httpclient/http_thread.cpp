@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_thread.cpp
- * @brief   HttpÏß³Ì
+ * @brief   Httpçº¿ç¨‹
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-7-8
  * @website www.xiangwangfeng.com
@@ -40,16 +40,16 @@ void	HttpThread::run()
 		DWORD object = WaitForMultipleObjects(2,notify_handle,FALSE,INFINITE);
 		if (object == WAIT_OBJECT_0)
 		{
-			break;	//ÍË³ö
+			break;	//é€€å‡º
 		}
 		else if (object == WAIT_OBJECT_0 + 1)
 		{
-			executeHttp();//Ö´ĞĞÈÎÎñ
+			executeHttp();//æ‰§è¡Œä»»åŠ¡
 		}
 		else
 		{
 			assert(false);
-			break;	//ÀíÂÛÉÏ²»»áµ½ÕâÒ»²½
+			break;	//ç†è®ºä¸Šä¸ä¼šåˆ°è¿™ä¸€æ­¥
 		}
 	}
 }
@@ -66,12 +66,12 @@ void	HttpThread::executeHttp()
 	{
 		IAsyncHttpDelegate* delegate = item->_async_delegate;
 
-		//½øĞĞHTTP½»»¥
+		//è¿›è¡ŒHTTPäº¤äº’
 		_http_client->reset();
 		_http_client->setProgressDelegate(delegate);
 		HttpResponse response;
 		bool execute = _http_client->execute(item->_http_request,&response);
-		//Ö´ĞĞ»Øµ÷
+		//æ‰§è¡Œå›è°ƒ
 		if (delegate)
 		{
 			if (execute)
@@ -84,7 +84,7 @@ void	HttpThread::executeHttp()
 			}
 		}
 
-		//»ØÊÕ×ÊÔ´
+		//å›æ”¶èµ„æº
 		delete item;
 	}
 }

@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_delegate.h
- * @brief   Http´«ÊäµÄ»Øµ÷½Ó¿Ú
+ * @brief   Httpä¼ è¾“çš„å›è°ƒæ¥å£
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-7-4
  * @website www.xiangwangfeng.com
@@ -15,7 +15,7 @@ NAMESPACE_BEGIN(Http)
 class	HttpRequest;
 class	HttpResponse;
 
-//´«Êä½ø¶È»Øµ÷
+//ä¼ è¾“è¿›åº¦å›è°ƒ
 class	IProgressDelegate
 {
 public:
@@ -24,7 +24,7 @@ public:
 	virtual	~IProgressDelegate() {}
 };
 
-//Òì²½´«Êä»Øµ÷
+//å¼‚æ­¥ä¼ è¾“å›è°ƒ
 class IAsyncHttpDelegate : public IProgressDelegate
 {
 public:

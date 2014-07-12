@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    standard_header.h
- * @brief   ±ê×¼Í·ÎÄ¼ş
+ * @brief   æ ‡å‡†å¤´æ–‡ä»¶
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-7-23
  * @website www.xiangwangfeng.com
@@ -16,12 +16,12 @@
 #include <WinSock2.h>
 #include <Windows.h>
 
-#define HTTP_CLIENT_EXPORT	//µ¼³ö±êÊ¶
+#define HTTP_CLIENT_EXPORT	//å¯¼å‡ºæ ‡è¯†
 
 #define PTR_BOOL(p)		{assert(p); if(!p){return false;}}
 #define PTR_VOID(p)		{assert(p); if(!p){return;}}
 #define SAFE_DELETE(p)	{if(p) {delete p; p = 0;}}
 
-const int	kmax_file_buffer_size		=	10240;	//ÉÏ´«ÏÂÔØÎÄ¼şµÄbufferµÄ´óĞ¡
-const int	kmax_buffer_size			=	1024;	//ÆÕÍ¨´«ÊäµÄbuffer´óĞ¡
+const int	kmax_file_buffer_size		=	10240;	//ä¸Šä¼ ä¸‹è½½æ–‡ä»¶çš„bufferçš„å¤§å°
+const int	kmax_buffer_size			=	1024;	//æ™®é€šä¼ è¾“çš„bufferå¤§å°
 const int	kmax_http_pool_threads_num	=	5;

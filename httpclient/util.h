@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    util.h
- * @brief   Í¨ÓÃµÄ¸¨Öúº¯Êı¼¯ºÏ
+ * @brief   é€šç”¨çš„è¾…åŠ©å‡½æ•°é›†åˆ
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-23
  * @website www.xiangwangfeng.com
@@ -14,28 +14,28 @@
 
 NAMESPACE_BEGIN(Util)
 
-//×ª»»×Ö·û´®ÎªĞ¡Ğ´
+//è½¬æ¢å­—ç¬¦ä¸²ä¸ºå°å†™
 void	makeLower(char*	source,int len);
 
-//×ª»»×Ö·û´®ÎªĞ¡Ğ´
+//è½¬æ¢å­—ç¬¦ä¸²ä¸ºå°å†™
 void	makeLower(const std::string& input,std::string& output);
 
-//Êı×Ö×ª×Ö·û´®
+//æ•°å­—è½¬å­—ç¬¦ä¸²
 std::string	num_to_string(int num);
 
-//³ıÈ¥×Ö·û´®Á½±ß¿Õ¸ñ
+//é™¤å»å­—ç¬¦ä¸²ä¸¤è¾¹ç©ºæ ¼
 void	trimString(const std::string& input,std::string& output);
 
-//Unicode×ªUTF8
+//Unicodeè½¬UTF8
 std::string	toUTF8(const std::wstring&	source);
 
-//Unicode×ªMBCS
+//Unicodeè½¬MBCS
 std::string	toMBCS(const std::wstring&	source);
 
-//·µ»ØÎÄ¼ş´óĞ¡
+//è¿”å›æ–‡ä»¶å¤§å°
 int		getFileSize(const std::wstring&	filepath);
 
-//rfc1738±àÂë
+//rfc1738ç¼–ç 
 std::string torfc1738(const std::string& source);
 
 NAMESPACE_END(Util)

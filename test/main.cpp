@@ -1,4 +1,4 @@
-#include <iostream>
+Ôªø#include <iostream>
 #include <windows.h>
 #include "../httpclient/http.h"
 
@@ -58,26 +58,26 @@ void	AsyncDownloadFile()
 
 int main()
 {
-	//Œ¥ π”√¥˙¿Ì
+	//Êú™‰ΩøÁî®‰ª£ÁêÜ
 	Http::ProxyConfig	empty_proxy;
 	std::wstring	noproxy_filepath = L"D:\\httpclient_download\\noproxy.jpg";
 	SyncDownloadFile(noproxy_filepath);
 
-	// π”√HTTP¥˙¿Ì
+	//‰ΩøÁî®HTTP‰ª£ÁêÜ
 	Http::ProxyConfig	http_proxy(Http::PROXY_HTTP,"192.168.132.163",808,"proxy","test");
 	Http::HttpClient::setProxy(&http_proxy);
 	std::wstring	http_proxy_filepath = L"D:\\httpclient_download\\httpproxy.jpg";
 	SyncDownloadFile(http_proxy_filepath);
 
 
-	// π”√Socks4¥˙¿Ì
+	//‰ΩøÁî®Socks4‰ª£ÁêÜ
 	//Http::ProxyConfig	socks4_proxy(Http::PROXY_SOCK4,"192.168.132.163",1080);
 	//Http::HttpClient::setProxy(&socks4_proxy);
 	//std::wstring	sock4_proxy_filepath = L"D:\\httpclient_download\\socks4.jpg";
 	//SyncDownloadFile(sock4_proxy_filepath);
 
 
-	// π”√Socks5¥˙¿Ì
+	//‰ΩøÁî®Socks5‰ª£ÁêÜ
 	Http::ProxyConfig	socks5_proxy(Http::PROXY_SOCK5,"192.168.132.163",1080,"proxy","test");
 	Http::HttpClient::setProxy(&socks5_proxy);
 	std::wstring	socks5_proxy_filepath = L"D:\\httpclient_download\\socks5.jpg";

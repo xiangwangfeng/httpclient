@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_request.h
- * @brief   HttpÇëÇó
+ * @brief   Httpè¯·æ±‚
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-24
  * @website www.xiangwangfeng.com
@@ -17,7 +17,7 @@ NAMESPACE_BEGIN(Http)
 
 class IHttpPostFile;
 
-//Http×Ö¶Î
+//Httpå­—æ®µ
 struct	HttpField
 {
 	std::string	_field_name;
@@ -26,7 +26,7 @@ struct	HttpField
 		:_field_name(name),_field_value(value){}
 };
 
-//HttpÉÏ´«ÎÄ¼ş¶¨Òå
+//Httpä¸Šä¼ æ–‡ä»¶å®šä¹‰
 struct HttpFile 
 {
 	std::string		_name;
@@ -69,19 +69,19 @@ private:
 	void	genBoundary();
 	DECLARE_NON_COPYABLE(HttpRequest)
 private:
-	std::string						_http_method;		//HTTP·½·¨
-	std::string						_http_host;			//Ö÷»ú
-	std::string						_object;			//ÇëÇó¶ÔÏó
-	int								_port_number;		//¶Ë¿Ú
-	std::vector<HttpField>			_header_fields;		//HTTPÍ·×Ö¶Î
-	std::vector<HttpField>			_body_fields;		//HTTPÌå²ÎÊı
-	std::vector<HttpFile*>			_post_files;		//ÉÏ´«ÎÄ¼şÁĞ±í
+	std::string						_http_method;		//HTTPæ–¹æ³•
+	std::string						_http_host;			//ä¸»æœº
+	std::string						_object;			//è¯·æ±‚å¯¹è±¡
+	int								_port_number;		//ç«¯å£
+	std::vector<HttpField>			_header_fields;		//HTTPå¤´å­—æ®µ
+	std::vector<HttpField>			_body_fields;		//HTTPä½“å‚æ•°
+	std::vector<HttpFile*>			_post_files;		//ä¸Šä¼ æ–‡ä»¶åˆ—è¡¨
 	std::string						_boundary;			//Boundary;
-	std::string						_body;				//HTTPÌå
-	bool							_is_multipart;		//ÊÇ·ñÊÇMultipart
-	bool							_only_download_header;//ÊÇ·ñÖ»ÏÂÔØHTTPÍ·
-	std::wstring					_filepath;			//ÓÃÓÚÏÂÔØµÄÎÄ¼şÂ·¾¶
-	bool							_save_as_file;		//ÊÇ·ñÒÔÎÄ¼şµÄĞÎÊ½½ÓÊÜ·´À¡
+	std::string						_body;				//HTTPä½“
+	bool							_is_multipart;		//æ˜¯å¦æ˜¯Multipart
+	bool							_only_download_header;//æ˜¯å¦åªä¸‹è½½HTTPå¤´
+	std::wstring					_filepath;			//ç”¨äºä¸‹è½½çš„æ–‡ä»¶è·¯å¾„
+	bool							_save_as_file;		//æ˜¯å¦ä»¥æ–‡ä»¶çš„å½¢å¼æ¥å—åé¦ˆ
 
 	friend	class	HttpClient;
 };

@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_header_parser.h
- * @brief   HttpÍ·½âÎöÀà
+ * @brief   Httpå¤´è§£æç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-24
  * @website www.xiangwangfeng.com
@@ -12,9 +12,9 @@
 
 NAMESPACE_BEGIN(Http)
 
-//HttpÎÄ¼şÍ·½âÎöÀà
-//Õâ¸ö½âÎöÀà²¢²»ÊÇÒ»¸öÍ¨ÓÃµÄ½âÎöÀà£¬Ö»¹Ø×¢ÈçÏÂ×Ö¶Î£º
-//ÊÇ·ñChunked´«Êä£¬ÎÄ¼ş³¤¶È£¬Http·µ»ØÂë
+//Httpæ–‡ä»¶å¤´è§£æç±»
+//è¿™ä¸ªè§£æç±»å¹¶ä¸æ˜¯ä¸€ä¸ªé€šç”¨çš„è§£æç±»ï¼Œåªå…³æ³¨å¦‚ä¸‹å­—æ®µï¼š
+//æ˜¯å¦Chunkedä¼ è¾“ï¼Œæ–‡ä»¶é•¿åº¦ï¼ŒHttpè¿”å›ç 
 class HttpHeaderParser
 {
 public:

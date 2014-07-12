@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_header.h
- * @brief   httpclientµÄÒıÓÃÍ·ÎÄ¼ş¼¯ºÏ
+ * @brief   httpclientçš„å¼•ç”¨å¤´æ–‡ä»¶é›†åˆ
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-7-8
  * @website www.xiangwangfeng.com

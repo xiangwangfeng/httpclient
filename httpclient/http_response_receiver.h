@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_response_receiver.h
- * @brief   Http·´À¡½ÓÊÜÀà
+ * @brief   Httpåé¦ˆæ¥å—ç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-26
  * @website www.xiangwangfeng.com
@@ -18,7 +18,7 @@ namespace Util
 
 NAMESPACE_BEGIN(Http)
 
-//Http·´À¡½ÓÊÜµÄWrapperÀà
+//Httpåé¦ˆæ¥å—çš„Wrapperç±»
 class HttpResponseReceiver
 {
 public:

@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    file_writer.h
- * @brief   Ğ´ÎÄ¼şWrapperÀà
+ * @brief   å†™æ–‡ä»¶Wrapperç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-25
  * @website www.xiangwangfeng.com
@@ -13,7 +13,7 @@
 
 NAMESPACE_BEGIN(Util)
 
-//Ğ´ÎÄ¼şWrapperÀà
+//å†™æ–‡ä»¶Wrapperç±»
 class FileWriter
 {
 public:
@@ -25,9 +25,9 @@ public:
 	void	flush();
 	void	close();
 private:
-	std::wstring	_filepath;		//ÎÄ¼şÂ·¾¶	
-	bool			_ready;			//ÊÇ·ñ×¼±¸Íê±Ï
-	FILE*			_file;			//ÎÄ¼şÖ¸Õë
+	std::wstring	_filepath;		//æ–‡ä»¶è·¯å¾„	
+	bool			_ready;			//æ˜¯å¦å‡†å¤‡å®Œæ¯•
+	FILE*			_file;			//æ–‡ä»¶æŒ‡é’ˆ
 };
 
 

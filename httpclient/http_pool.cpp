@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_pool.cpp
- * @brief   Http´«Êä³Ø
+ * @brief   Httpä¼ è¾“æ± 
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-7-6
  * @website www.xiangwangfeng.com
@@ -28,7 +28,7 @@ HttpWorkItem::HttpWorkItem(HttpRequest* http_request,
 
 HttpWorkItem::~HttpWorkItem()
 {
-	//HttpWorkItem²»¸ºÔğÇåÀíÄÚ²¿Êı¾İ
+	//HttpWorkItemä¸è´Ÿè´£æ¸…ç†å†…éƒ¨æ•°æ®
 }
 
 
@@ -60,12 +60,12 @@ void	HttpPool::freeInstance()
 
 void	HttpPool::init()
 {
-	//³õÊ¼»¯ĞÅºÅÁ¿,ÍË³öÊÂ¼ş,Ëø
+	//åˆå§‹åŒ–ä¿¡å·é‡,é€€å‡ºäº‹ä»¶,é”
 	_exit_event		=	CreateEvent(NULL,TRUE,FALSE,NULL);
 	_work_semaphore	=	CreateSemaphore(NULL,0,INT_MAX,NULL);
 	_work_lock		=	new Util::Lock();
 
-	//³õÊ¼»¯Ïß³Ì
+	//åˆå§‹åŒ–çº¿ç¨‹
 	for (int i = 0; i < kmax_http_pool_threads_num; i++)
 	{	
 		std::string thread_name = genThreadName(i);
@@ -77,16 +77,16 @@ void	HttpPool::init()
 
 void	HttpPool::releaseAll()
 {
-	//ÊÍ·ÅÍË³öÊÂ¼ş
+	//é‡Šæ”¾é€€å‡ºäº‹ä»¶
 	::SetEvent(_exit_event);
 
-	//µ÷ÓÃHttpThread×ÔÉ±µÄ·½·¨
+	//è°ƒç”¨HttpThreadè‡ªæ€çš„æ–¹æ³•
 	for (size_t i = 0; i < _http_threads.size(); i++)
 	{
 		_http_threads[i]->killSelf();
 	}
 
-	//µÈ´ıHttpThreadÍË³ö
+	//ç­‰å¾…HttpThreadé€€å‡º
 	for (size_t i = 0; i < _http_threads.size(); i++)
 	{
 		_http_threads[i]->waitThreadExit();
@@ -94,7 +94,7 @@ void	HttpPool::releaseAll()
 	}
 	_http_threads.clear();
 
-	//ÇåÀíÈÎÎñ¶ÓÁĞ
+	//æ¸…ç†ä»»åŠ¡é˜Ÿåˆ—
 	for (std::list<HttpWorkItem*>::iterator it = _http_work_list.begin();
 		it != _http_work_list.end(); it++)
 	{
@@ -102,7 +102,7 @@ void	HttpPool::releaseAll()
 	}
 	_http_work_list.clear();
 
-	//ÇåÀí¾ä±ú
+	//æ¸…ç†å¥æŸ„
 	CloseHandle(_exit_event);
 	CloseHandle(_work_semaphore);
 	delete _work_lock;

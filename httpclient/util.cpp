@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    util.cpp
- * @brief   Í¨ÓÃµÄ¸¨Öúº¯Êı¼¯ºÏ
+ * @brief   é€šç”¨çš„è¾…åŠ©å‡½æ•°é›†åˆ
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-23
  * @website www.xiangwangfeng.com
@@ -79,7 +79,7 @@ int		getFileSize(const std::wstring& filepath)
 	std::string	mbcs_filepath	=	toMBCS(filepath);
 	struct stat file_stat;
 	stat(mbcs_filepath.c_str(),&file_stat);
-	return (int)file_stat.st_size;		//²»Ö§³Ö´óÎÄ¼ş
+	return (int)file_stat.st_size;		//ä¸æ”¯æŒå¤§æ–‡ä»¶
 }
 
 

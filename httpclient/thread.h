@@ -1,10 +1,10 @@
-/**
+ï»¿/**
  * @file    thread.h
- * @brief   Ïß³Ì·â×°
+ * @brief   çº¿ç¨‹å°è£…
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-7-6
  * @website www.xiangwangfeng.com
- * @note Õâ¸öÀàÖ»ÔÚÄÚ²¿Ê¹ÓÃ ËùÒÔ²»Ìá¹©¶ÔÏß³ÌÇ¿É±µÄ·½·¨£¬Ò²²»ÍÆ¼öÊ¹ÓÃ
+ * @note è¿™ä¸ªç±»åªåœ¨å†…éƒ¨ä½¿ç”¨ æ‰€ä»¥ä¸æä¾›å¯¹çº¿ç¨‹å¼ºæ€çš„æ–¹æ³•ï¼Œä¹Ÿä¸æ¨èä½¿ç”¨
  */
 #pragma once
 #include <string>

@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    streaming_socket.cpp
- * @brief   ¶ÔÔ­ÉúWinSocketµÄ·â×°Àà
+ * @brief   å¯¹åŸç”ŸWinSocketçš„å°è£…ç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-23
  * @website www.xiangwangfeng.com

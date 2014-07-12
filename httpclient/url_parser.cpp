@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    url_parser.cpp
- * @brief   ¼òµ¥µÄURL½âÎöÀà(È±ÉÙ¸÷ÖÖÅĞ¶Ï£¬´ıÍêÉÆ)
+ * @brief   ç®€å•çš„URLè§£æç±»(ç¼ºå°‘å„ç§åˆ¤æ–­ï¼Œå¾…å®Œå–„)
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-24
  * @website www.xiangwangfeng.com
@@ -22,7 +22,7 @@ _object(url)
 void	URLParser::parseURL(const std::string &url)
 {
 	size_t	length	=	url.length();
-	if (length	<	7)	//¹ı¶ÌµÄURL¿ÉÒÔÈÏÎªÊÇÎŞĞ§µÄ
+	if (length	<	7)	//è¿‡çŸ­çš„URLå¯ä»¥è®¤ä¸ºæ˜¯æ— æ•ˆçš„
 	{
 		assert(false);
 		return;

@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    proxy_config.h
- * @brief   ´úÀíÅäÖÃÏî
+ * @brief   ä»£ç†é…ç½®é¡¹
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-23
  * @website www.xiangwangfeng.com
@@ -12,7 +12,7 @@
 
 NAMESPACE_BEGIN(Http)
 
-//´úÀíÀàĞÍ
+//ä»£ç†ç±»å‹
 enum HTTP_DATA ProxyType
 {
 	PROXY_NULL,
@@ -21,7 +21,7 @@ enum HTTP_DATA ProxyType
 	PROXY_SOCK5,
 };
 
-//´úÀíÅäÖÃÏî
+//ä»£ç†é…ç½®é¡¹
 struct HTTP_DATA ProxyConfig
 {
 	ProxyConfig()

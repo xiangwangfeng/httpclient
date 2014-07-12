@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    file_reader.cpp
- * @brief   ¶ÁÎÄ¼şWrapperÀà
+ * @brief   è¯»æ–‡ä»¶Wrapperç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-27
  * @website www.xiangwangfeng.com

@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_global.h
- * @brief   HttpÈ«¾ÖÊý¾Ý¶¨Òå
+ * @brief   Httpå…¨å±€æ•°æ®å®šä¹‰
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-24
  * @website www.xiangwangfeng.com
@@ -17,15 +17,15 @@ const	char	kcontent_length[]	=	"Content-Length";
 
 NAMESPACE_BEGIN(Http)
 
-//Http´«Êä´íÎóÂë
+//Httpä¼ è¾“é”™è¯¯ç 
 enum	HTTPERROR
 {
-	HTTPERROR_SUCCESS,		//ÕýÈ·
-	HTTPERROR_INVALID,		//HTTPÒÑ¾­±»ÆúÓÃ
-	HTTPERROR_CONNECT,		//Á¬½Ó³ö´í
-	HTTPERROR_TRANSPORT,	//´«ÊäÊ§°Ü
-	HTTPERROR_IO,			//IO´íÎó
-	HTTPERROR_PARAMETER		//ÎÞÐ§²ÎÊý
+	HTTPERROR_SUCCESS,		//æ­£ç¡®
+	HTTPERROR_INVALID,		//HTTPå·²ç»è¢«å¼ƒç”¨
+	HTTPERROR_CONNECT,		//è¿žæŽ¥å‡ºé”™
+	HTTPERROR_TRANSPORT,	//ä¼ è¾“å¤±è´¥
+	HTTPERROR_IO,			//IOé”™è¯¯
+	HTTPERROR_PARAMETER		//æ— æ•ˆå‚æ•°
 };
 
 NAMESPACE_END(Http)

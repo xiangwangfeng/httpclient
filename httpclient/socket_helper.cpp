@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    socket_helper.cpp
- * @brief   SocketÏà¹ØµÄ¸¨Öúº¯Êı
+ * @brief   Socketç›¸å…³çš„è¾…åŠ©å‡½æ•°
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-23
  * @website www.xiangwangfeng.com
@@ -171,7 +171,7 @@ unsigned long	getIntAddress(const char* ip_address)
 	if (ip_address)
 	{
 		ret = ::inet_addr(ip_address);
-		if (ret == INADDR_NONE)		//ÊÇÓòÃû
+		if (ret == INADDR_NONE)		//æ˜¯åŸŸå
 		{
 			struct hostent* host = gethostbyname(ip_address);
 			if (host == 0)

@@ -1,6 +1,6 @@
-/**
+﻿/**
  * @file    http_thread.h
- * @brief   Http�߳�
+ * @brief   Http线程
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-7-8
  * @website www.xiangwangfeng.com

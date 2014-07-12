@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    global_defs.h
- * @brief   ÀàºÍÃû´Ê¿Õ¼äÏà¹ØµÄºê¶¨Òå
+ * @brief   ç±»å’Œåè¯ç©ºé—´ç›¸å…³çš„å®å®šä¹‰
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-23
  * @website www.xiangwangfeng.com

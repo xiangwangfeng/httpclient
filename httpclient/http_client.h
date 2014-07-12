@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_client.h
- * @brief   Http´«ÊäÀà
+ * @brief   Httpä¼ è¾“ç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-24
  * @website www.xiangwangfeng.com
@@ -25,21 +25,21 @@ class	HttpResponse;
 class	IHttpPostFile;
 class	IProgressDelegate;
 
-//Http´«ÊäÀà
+//Httpä¼ è¾“ç±»
 class	HTTP_CLASS	HttpClient
 {
 public:
 	HttpClient(bool keep_connection = false);
 	~HttpClient();
 public:
-	//Ö´ĞĞHttp²ÎÊı·½·¨
-	bool			execute(HttpRequest* request,HttpResponse* respone);							//Ö´ĞĞHttp´«Êä
-	static	void	setProxy(const ProxyConfig*	proxy_config);										//ÉèÖÃ´úÀí
-	HTTPERROR		getErrorCode()	const {	return	_http_error;}									//·µ»Ø´íÎóÂë
-	void			setProgressDelegate(IProgressDelegate* delegate)	{ _delegate = delegate;}	//ÉèÖÃ½ø¶ÈÎ¯ÍĞ
+	//æ‰§è¡ŒHttpå‚æ•°æ–¹æ³•
+	bool			execute(HttpRequest* request,HttpResponse* respone);							//æ‰§è¡ŒHttpä¼ è¾“
+	static	void	setProxy(const ProxyConfig*	proxy_config);										//è®¾ç½®ä»£ç†
+	HTTPERROR		getErrorCode()	const {	return	_http_error;}									//è¿”å›é”™è¯¯ç 
+	void			setProgressDelegate(IProgressDelegate* delegate)	{ _delegate = delegate;}	//è®¾ç½®è¿›åº¦å§”æ‰˜
 private:
-	void		killSelf();																		//ÆúÓÃµ±Ç°HttpClient
-	void		reset();																		//ÖØÉèµ±Ç°HttpClient
+	void		killSelf();																		//å¼ƒç”¨å½“å‰HttpClient
+	void		reset();																		//é‡è®¾å½“å‰HttpClient
 	void		setErrorCode(HTTPERROR http_error);
 	bool		httpGet();
 	bool		httpPost();
@@ -56,14 +56,14 @@ private:
 	void		onDataReadProgress(int read_length,int total_length);
 	DECLARE_NON_COPYABLE(HttpClient)
 private:
-	ProxySocket*			_proxy_socket;			//Ö§³Ö´úÀíµÄSocketÀà
-	HTTPERROR				_http_error;			//Http´«Êä´íÎóÂë
-	bool					_keep_connection;		//ÊÇ·ñ±£³ÖÁ¬½Ó
-	HttpRequest*			_request;				//HttpÇëÇó·½·¨
-	HttpResponse*			_response;				//Http·´À¡Êı¾İ
-	IProgressDelegate*		_delegate;				//Http´«ÊäµÄÎ¯ÍĞ
-	bool					_is_valid;				//ÊÇ·ñ¿ÉÓÃ(Èç¹ûµ÷ÓÃÁËkillSelf½Ó¿ÚÕâ¸öClient¾ÍÆúÓÃ)
-	Util::Lock*				_is_valid_lock;			//ÊÇ·ñ¿ÉÓÃµÄÍ¬²½Ëø
+	ProxySocket*			_proxy_socket;			//æ”¯æŒä»£ç†çš„Socketç±»
+	HTTPERROR				_http_error;			//Httpä¼ è¾“é”™è¯¯ç 
+	bool					_keep_connection;		//æ˜¯å¦ä¿æŒè¿æ¥
+	HttpRequest*			_request;				//Httpè¯·æ±‚æ–¹æ³•
+	HttpResponse*			_response;				//Httpåé¦ˆæ•°æ®
+	IProgressDelegate*		_delegate;				//Httpä¼ è¾“çš„å§”æ‰˜
+	bool					_is_valid;				//æ˜¯å¦å¯ç”¨(å¦‚æœè°ƒç”¨äº†killSelfæ¥å£è¿™ä¸ªClientå°±å¼ƒç”¨)
+	Util::Lock*				_is_valid_lock;			//æ˜¯å¦å¯ç”¨çš„åŒæ­¥é”
 
 	friend	class HttpThread;
 };

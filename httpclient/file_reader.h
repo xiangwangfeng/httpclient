@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    file_reader.h
- * @brief   ¶ÁÎÄ¼şWrapperÀà
+ * @brief   è¯»æ–‡ä»¶Wrapperç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-27
  * @website www.xiangwangfeng.com
@@ -13,7 +13,7 @@
 
 NAMESPACE_BEGIN(Util)
 
-//¶ÁÎÄ¼şWrapperÀà
+//è¯»æ–‡ä»¶Wrapperç±»
 class	FileReader
 {
 public:
@@ -24,9 +24,9 @@ public:
 	int		read(char* buffer,size_t length);
 	void	close();
 private:
-	std::wstring	_filepath;		//ÎÄ¼şÂ·¾¶
-	bool			_ready;			//ÊÇ·ñ×¼±¸Íê±Ï
-	FILE*			_file;			//ÎÄ¼şÖ¸Õë
+	std::wstring	_filepath;		//æ–‡ä»¶è·¯å¾„
+	bool			_ready;			//æ˜¯å¦å‡†å¤‡å®Œæ¯•
+	FILE*			_file;			//æ–‡ä»¶æŒ‡é’ˆ
 };
 
 NAMESPACE_END(Util)

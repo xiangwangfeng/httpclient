@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_client.cpp
- * @brief   Http´«ÊäÀà
+ * @brief   Httpä¼ è¾“ç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-24
  * @website www.xiangwangfeng.com
@@ -40,22 +40,22 @@ HttpClient::~HttpClient()
 
 bool	HttpClient::execute(HttpRequest* request,HttpResponse* respone)
 {
-	//²ÎÊı¼ì²é
+	//å‚æ•°æ£€æŸ¥
 	PTR_BOOL(request);
 	PTR_BOOL(respone);
 	_request	=	request;
 	_response	=	respone;
 	setErrorCode(HTTPERROR_SUCCESS);
 
-	//Á¬½Ó·şÎñÆ÷
+	//è¿æ¥æœåŠ¡å™¨
 	const std::string&	host	=	_request->getHost();
 	int	port_number				=	_request->getPortNumber();
 	_proxy_socket->setHost(host,port_number);
 
-	//³¢ÊÔÁ¬½Ó
+	//å°è¯•è¿æ¥
 	{
 		const Util::ScopedLock scoped_lock(*_is_valid_lock);
-		if (_is_valid)	//ÅĞ¶ÏHttpClientÊÇ·ñ»¹ÓĞĞ§
+		if (_is_valid)	//åˆ¤æ–­HttpClientæ˜¯å¦è¿˜æœ‰æ•ˆ
 		{
 			if (!(_keep_connection && _proxy_socket->isConnected()))
 			{
@@ -73,27 +73,27 @@ bool	HttpClient::execute(HttpRequest* request,HttpResponse* respone)
 		}
 	}
 
-	//½øĞĞÊı¾İ´«Êä
+	//è¿›è¡Œæ•°æ®ä¼ è¾“
 	bool	execute				=	false;
 	const	std::string& method	=	_request->getMethod();
 
-	//Get·½·¨
+	//Getæ–¹æ³•
 	if (_strcmpi(method.c_str(),kget) == 0)
 	{
 		execute	=	httpGet();
 	}
-	//Post·½·¨
+	//Postæ–¹æ³•
 	else if (_strcmpi(method.c_str(),kpost) == 0)
 	{
 		execute	=	httpPost();
 	}
-	//ÆäËû£¬Å×³ö´íÎó
+	//å…¶ä»–ï¼ŒæŠ›å‡ºé”™è¯¯
 	else
 	{
 		assert(false);
 	}
 	
-	//Èç¹û²»ÊÇ³¤Á¬½Ó ¾Í¹Ø±ÕÍøÂç
+	//å¦‚æœä¸æ˜¯é•¿è¿æ¥ å°±å…³é—­ç½‘ç»œ
 	if (!_keep_connection)
 	{
 		_proxy_socket->close();
@@ -111,8 +111,8 @@ void	HttpClient::setProxy(const Http::ProxyConfig *proxy_config)
 void	HttpClient::setErrorCode(HTTPERROR http_error)
 {
 	_http_error	=	http_error;
-	//Èç¹û´«ÊäÊ§°Üºó£¬¹Ø±Õµ±Ç°Socket 
-	//(ÎªÁËÖ§³Ökeep-aliveÄ£Ê½£¬ÔÚ·şÎñÆ÷³ö´íºóÄÜ¹»Õı³£½øĞĞÖØÁ¬)
+	//å¦‚æœä¼ è¾“å¤±è´¥åï¼Œå…³é—­å½“å‰Socket 
+	//(ä¸ºäº†æ”¯æŒkeep-aliveæ¨¡å¼ï¼Œåœ¨æœåŠ¡å™¨å‡ºé”™åèƒ½å¤Ÿæ­£å¸¸è¿›è¡Œé‡è¿)
 	if (_http_error != HTTPERROR_SUCCESS)	
 	{
 		_proxy_socket->close();
@@ -136,10 +136,10 @@ void	HttpClient::reset()
 
 bool	HttpClient::httpGet()
 {
-	//·¢ËÍHTTPÍ·ÇëÇó
+	//å‘é€HTTPå¤´è¯·æ±‚
 	if (sendHeader())
 	{
-		//½ÓÊÜ·´À¡
+		//æ¥å—åé¦ˆ
 		return	getResponse();
 	}
 	else
@@ -151,7 +151,7 @@ bool	HttpClient::httpGet()
 
 bool	HttpClient::httpPost()
 {
-	//·¢ËÍHTTPÍ·ÇëÇó
+	//å‘é€HTTPå¤´è¯·æ±‚
 	bool complete = false;
 	if (sendHeader())
 	{
@@ -188,8 +188,8 @@ bool	HttpClient::sendBody()
 	size_t	length				=	body.length();
 	if (length == 0)
 	{
-		return true;	//Èç¹ûbodyÄÚÃ»ÓĞÄÚÈİ Ö±½Ó·µ»Øtrue
-						//(ÉÏ´«ÎÄ¼şµÄÊ±ºòbodyÄÚÈİÊÇ¶¯Ì¬Éú³É£¬bodyÄÚÈİ¿ÉÄÜÎª¿Õ) 
+		return true;	//å¦‚æœbodyå†…æ²¡æœ‰å†…å®¹ ç›´æ¥è¿”å›true
+						//(ä¸Šä¼ æ–‡ä»¶çš„æ—¶å€™bodyå†…å®¹æ˜¯åŠ¨æ€ç”Ÿæˆï¼Œbodyå†…å®¹å¯èƒ½ä¸ºç©º) 
 	}
 	bool	send				=	_proxy_socket->writeAll(body.c_str(),body.length());
 	if (!send)
@@ -201,14 +201,14 @@ bool	HttpClient::sendBody()
 
 bool	HttpClient::doMultipartPost()
 {
-	//Èç¹ûÓĞFields¶Î ÒÑ¾­Ğ´ÈëÁËbodyÄÚ  Ö±½Ó·¢ËÍ
+	//å¦‚æœæœ‰Fieldsæ®µ å·²ç»å†™å…¥äº†bodyå†…  ç›´æ¥å‘é€
 	if (!sendBody())
 	{
 		setErrorCode(HTTPERROR_TRANSPORT);
 		return false;
 	}
 
-	//·¢ËÍÎÄ¼ş
+	//å‘é€æ–‡ä»¶
 	const std::vector<HttpFile*>& post_files	=	_request->getFiles();
 	const std::string&	boundary				=	_request->getBoundary();
 	for (size_t i = 0; i < post_files.size(); i++)
@@ -245,7 +245,7 @@ bool	HttpClient::doMultipartPost()
 		}
 	}
 
-	//·¢ËÍboundary½áÊø±ê¼Ç
+	//å‘é€boundaryç»“æŸæ ‡è®°
 	std::string post_tailer		= "--" + boundary + "--\r\n";
 	bool send_post_tailer		= _proxy_socket->writeAll(post_tailer.c_str(),post_tailer.size());
 	
@@ -262,10 +262,10 @@ bool	HttpClient::uploadFile(IHttpPostFile* post_file)
 
 bool	HttpClient::getResponse()
 {
-	std::string	body_header;		//ÊÕÈ¡µÄBodyºÍHeaderµÄ»ìºÏÌå
+	std::string	body_header;		//æ”¶å–çš„Bodyå’ŒHeaderçš„æ··åˆä½“
 	if (downloadHeader(body_header))
 	{
-		//Èç¹ûÇëÇóÖ¸¶¨Ö»ĞèÒª»ñÈ¡HttpÍ·Ö±½Ó·µ»Ø (Ö÷ÒªÊÇÎª·Ö¶ÎÏÂÔØ¼õÉÙÏÂÔØÁ¿)
+		//å¦‚æœè¯·æ±‚æŒ‡å®šåªéœ€è¦è·å–Httpå¤´ç›´æ¥è¿”å› (ä¸»è¦æ˜¯ä¸ºåˆ†æ®µä¸‹è½½å‡å°‘ä¸‹è½½é‡)
 		if (_request->onlyDownloadHeader())
 		{
 			return true;
@@ -295,8 +295,8 @@ bool	HttpClient::downloadHeader(std::string& body_header)
 			setErrorCode(HTTPERROR_TRANSPORT);
 			break;
 		}
-		header.append(buff,ret);					//ÒòÎªHeaderÍùÍùºÜ¶Ì£¬»ù±¾Ò»´Î¿ÉÒÔÊÕÍê
-		size_t end_index = header.find("\r\n\r\n");	//ËùÒÔÒ²²»ĞèÒª¼ÆËãÆ«ÒÆÀ´Ìá¸ßËÑË÷ËÙ¶È
+		header.append(buff,ret);					//å› ä¸ºHeaderå¾€å¾€å¾ˆçŸ­ï¼ŒåŸºæœ¬ä¸€æ¬¡å¯ä»¥æ”¶å®Œ
+		size_t end_index = header.find("\r\n\r\n");	//æ‰€ä»¥ä¹Ÿä¸éœ€è¦è®¡ç®—åç§»æ¥æé«˜æœç´¢é€Ÿåº¦
 		if (end_index != std::string::npos)
 		{
 			complete			= true;
@@ -317,16 +317,16 @@ bool	HttpClient::downloadBody(const std::string& body_header)
 	int		content_lenght		=	header_parser.getContentLength();
 	bool	complete			=	false;
 	_response->setHttpCode(http_code);
-	if (is_chunked)	//ChunkÀàĞÍµÄHttpÌå
+	if (is_chunked)	//Chunkç±»å‹çš„Httpä½“
 	{
 		complete = downloadChunkedBody(body_header);
 	}
-	else	//´øContent-LengthµÄHttpÌå
+	else	//å¸¦Content-Lengthçš„Httpä½“
 	{
 		complete = downloadFixedSizeBody(body_header,content_lenght);	
 	}
 
-	return complete;	//ÏÂÔØÍê±Ï
+	return complete;	//ä¸‹è½½å®Œæ¯•
 }
 
 
@@ -341,12 +341,12 @@ bool	HttpClient::downloadFixedSizeBody(const std::string& body_header,int conten
 		return false;
 	}
 	
-	//¹¹ÔìHttp·´À¡½ÓÊÕÀà
+	//æ„é€ Httpåé¦ˆæ¥æ”¶ç±»
 	HttpResponseReceiver*	response_receiver	=	0;
 	if (_request->saveAsFile())
 	{
 		const std::wstring& filepath	=	_request->getFilePath();
-		_response->setBody(Util::toUTF8(filepath));		//Èç¹ûÊÇÏÂÔØµ½±¾µØIO£¬ÔòresponseµÄBodyÀïÃæ±£´æµÄÊÇÎÄ¼şÂ·¾¶
+		_response->setBody(Util::toUTF8(filepath));		//å¦‚æœæ˜¯ä¸‹è½½åˆ°æœ¬åœ°IOï¼Œåˆ™responseçš„Bodyé‡Œé¢ä¿å­˜çš„æ˜¯æ–‡ä»¶è·¯å¾„
 		response_receiver				=	new HttpResponseReceiver(filepath);
 	}
 	else
@@ -354,7 +354,7 @@ bool	HttpClient::downloadFixedSizeBody(const std::string& body_header,int conten
 		response_receiver				=	new HttpResponseReceiver();
 	}
 
-	//½ÓÊÜHttpÌå
+	//æ¥å—Httpä½“
 	bool	complete=	false;
 	bool	write	=	response_receiver->write(body_header.c_str(),body_header.length());
 	if (write)
@@ -385,7 +385,7 @@ bool	HttpClient::downloadFixedSizeBody(const std::string& body_header,int conten
 		setErrorCode(HTTPERROR_IO);
 	}
 
-	//Èç¹ûÊÇĞ´ÈëÄÚ´æÊı¾İ ĞèÒª¸³»Ø¸øHttpResponse
+	//å¦‚æœæ˜¯å†™å…¥å†…å­˜æ•°æ® éœ€è¦èµ‹å›ç»™HttpResponse
 	if (complete && !_request->saveAsFile())
 	{
 		const std::string&	body	=	response_receiver->getBody();
@@ -398,13 +398,13 @@ bool	HttpClient::downloadFixedSizeBody(const std::string& body_header,int conten
 
 bool	HttpClient::downloadChunkedBody(const std::string& body_header)
 {
-	std::string body		= body_header;		//½ÓÊÜHTTPÍ·Ê±ÄÃµ½µÄ²¿·ÖHTTPÌåĞÅÏ¢
-	bool complete			= false;			//ÊÇ·ñÒÑ¾­½ÓÊÜÍêÕûÁË
-	bool find_first_chunk	= false;			//ÊÇ·ñÕÒµ½µÚÒ»¸öChunkSize
-	int	 chunk_size			= 0;				//ChunkµÄÊı¾İ´óĞ¡
-	int  chunk_size_length	= 0;				//ChunkSizeµÄ´óĞ¡  ±ÈÈç 12\r\n ËµÃ÷;chunk_sizeÎª18 chunk_size_lengthÎª2
+	std::string body		= body_header;		//æ¥å—HTTPå¤´æ—¶æ‹¿åˆ°çš„éƒ¨åˆ†HTTPä½“ä¿¡æ¯
+	bool complete			= false;			//æ˜¯å¦å·²ç»æ¥å—å®Œæ•´äº†
+	bool find_first_chunk	= false;			//æ˜¯å¦æ‰¾åˆ°ç¬¬ä¸€ä¸ªChunkSize
+	int	 chunk_size			= 0;				//Chunkçš„æ•°æ®å¤§å°
+	int  chunk_size_length	= 0;				//ChunkSizeçš„å¤§å°  æ¯”å¦‚ 12\r\n è¯´æ˜;chunk_sizeä¸º18 chunk_size_lengthä¸º2
 
-	//¹¹ÔìHttp·´À¡½ÓÊÕÀà
+	//æ„é€ Httpåé¦ˆæ¥æ”¶ç±»
 	HttpResponseReceiver*	response_receiver	=	0;
 	bool	save_as_file						=	_request->saveAsFile();
 	if (save_as_file)
@@ -418,22 +418,22 @@ bool	HttpClient::downloadChunkedBody(const std::string& body_header)
 		response_receiver				=	new HttpResponseReceiver();
 	}
 
-	//½ÓÊÜ²¢½âÎöchunkÄÚÈİ
+	//æ¥å—å¹¶è§£æchunkå†…å®¹
 	while(true)
 	{
-		//Èç¹ûÔÚÉÏ´ÎÒÑ¾­²éÑ¯µ½µÚÒ»¿échunkµÄ´óĞ¡
+		//å¦‚æœåœ¨ä¸Šæ¬¡å·²ç»æŸ¥è¯¢åˆ°ç¬¬ä¸€å—chunkçš„å¤§å°
 		if (find_first_chunk)
 		{
-			if (chunk_size == 0)//Èç¹ûÊÇ×îºóÒ»¿éÁË
+			if (chunk_size == 0)//å¦‚æœæ˜¯æœ€åä¸€å—äº†
 			{
 				complete = true;
 				break;
 			}
-			else	//·ñÔò·ÖÎöchunkÄÚÈİ²¢½øĞĞÇĞ¸î
+			else	//å¦åˆ™åˆ†æchunkå†…å®¹å¹¶è¿›è¡Œåˆ‡å‰²
 			{
 				size_t length		= body.length();
 				size_t first_chunk	= chunk_size_length + 2 + chunk_size + 2;
-				if (length >= first_chunk)	//Èç¹ûÒÑ¾­½ÓÊÜµ½Ò»Õû¿échunkdataÁËÔò½øĞĞÇĞ¸î£¬·ñÔòÖØĞÂ½ÓÊÜ
+				if (length >= first_chunk)	//å¦‚æœå·²ç»æ¥å—åˆ°ä¸€æ•´å—chunkdataäº†åˆ™è¿›è¡Œåˆ‡å‰²ï¼Œå¦åˆ™é‡æ–°æ¥å—
 				{
 					find_first_chunk		= false;
 					std::string chunk_data	= body.substr(chunk_size_length + 2, chunk_size);
@@ -454,10 +454,10 @@ bool	HttpClient::downloadChunkedBody(const std::string& body_header)
 				}
 			}
 		}
-		else//²éÕÒchunk_size
+		else//æŸ¥æ‰¾chunk_size
 		{
 			size_t index = body.find("\r\n");
-			if (index != std::string::npos)		//ÕÒµ½£¬×ö±ê¼Ç
+			if (index != std::string::npos)		//æ‰¾åˆ°ï¼Œåšæ ‡è®°
 			{
 				find_first_chunk			= true;
 				chunk_size_length			= (int)index;
@@ -465,7 +465,7 @@ bool	HttpClient::downloadChunkedBody(const std::string& body_header)
 				chunk_size					= (int)strtoul(raw_chunk_size.c_str(),0,16);
 
 			}
-			else	//Ã»ÓĞÕÒµ½£¬¼ÌĞø½ÓÊÜĞÅÏ¢
+			else	//æ²¡æœ‰æ‰¾åˆ°ï¼Œç»§ç»­æ¥å—ä¿¡æ¯
 			{
 				if (!continueToReceiveBody(body))
 				{

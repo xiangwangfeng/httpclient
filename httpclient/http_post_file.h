@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_post_file.h
- * @brief   ÓÃÓÚHTTP POSTµÄÎÄ¼ş½Ó¿Ú¶¨Òå 
+ * @brief   ç”¨äºHTTP POSTçš„æ–‡ä»¶æ¥å£å®šä¹‰ 
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-26
  * @website www.xiangwangfeng.com
@@ -18,7 +18,7 @@ class	ProxySocket;
 class	IProgressDelegate;
 
 
-//ÎÄ¼şPOST´«Êä½á¹¹
+//æ–‡ä»¶POSTä¼ è¾“ç»“æ„
 struct	HTTP_CLASS FilePoster 
 {
 	ProxySocket*	_proxy_socket;
@@ -29,7 +29,7 @@ struct	HTTP_CLASS FilePoster
 		: _proxy_socket(proxy_socket) ,_http_error(http_error),_delegate(delegate){}
 };
 
-//HTTP POSTÎÄ¼ş½Ó¿Ú
+//HTTP POSTæ–‡ä»¶æ¥å£
 class HTTP_CLASS	IHttpPostFile
 {
 public:
@@ -37,17 +37,17 @@ public:
 	const	std::string&	getFilename()	const	{	return	_filename;}
 	int		getFileSize()	const					{	return	_file_size;}
 
-	//´«Êä½Ó¿Ú£¬ĞèÒªÅÉÉúÀàÊµÏÖ
+	//ä¼ è¾“æ¥å£ï¼Œéœ€è¦æ´¾ç”Ÿç±»å®ç°
 	virtual	bool	postFile(FilePoster&	file_poster)	= 0;
 	virtual	~IHttpPostFile() {}
 protected:
-	int			_file_size;			//ÎÄ¼ş´óĞ¡
-	std::string	_filename;			//ÎÄ¼şÃû
+	int			_file_size;			//æ–‡ä»¶å¤§å°
+	std::string	_filename;			//æ–‡ä»¶å
 	std::string	_content_type;		//Content-Type
 };
 
 
-//±¾µØÎÄ¼şÁ÷
+//æœ¬åœ°æ–‡ä»¶æµ
 class HTTP_CLASS	HttpFileStream	:	public	IHttpPostFile
 {
 public:
@@ -55,11 +55,11 @@ public:
 public:
 	virtual	bool	postFile(FilePoster&	file_poster);
 private:
-	std::wstring		_filepath;		//ÎÄ¼şÃû
+	std::wstring		_filepath;		//æ–‡ä»¶å
 };
 
 
-//ÄÚ´æÎÄ¼şÁ÷
+//å†…å­˜æ–‡ä»¶æµ
 class HTTP_CLASS	HttpMemoryStream	:	public	IHttpPostFile
 {
 public:
@@ -68,7 +68,7 @@ public:
 public:
 	virtual	bool	postFile(FilePoster&	file_poster);
 private:
-	std::string		_data;		//Êı¾İ¿é
+	std::string		_data;		//æ•°æ®å—
 };
 
 NAMESPACE_END(Http)

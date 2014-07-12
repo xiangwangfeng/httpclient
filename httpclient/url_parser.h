@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    url_parser.h
- * @brief   ¼òµ¥µÄURL½âÎöÀà(È±ÉÙ¸÷ÖÖÅĞ¶Ï£¬´ıÍêÉÆ)
+ * @brief   ç®€å•çš„URLè§£æç±»(ç¼ºå°‘å„ç§åˆ¤æ–­ï¼Œå¾…å®Œå–„)
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-24
  * @website www.xiangwangfeng.com
@@ -12,7 +12,7 @@
 
 NAMESPACE_BEGIN(Http)
 
-//URL½âÎöÀà
+//URLè§£æç±»
 class URLParser
 {
 public:
@@ -25,9 +25,9 @@ private:
 	void	parseURL(const std::string&	url);
 	void	splitURL(const std::string& format_url);
 private:
-	int			_port;		//¶Ë¿Ú
-	std::string	_domain;	//ÓòÃû
-	std::string	_object;	//ÇëÇóÊı¾İ
+	int			_port;		//ç«¯å£
+	std::string	_domain;	//åŸŸå
+	std::string	_object;	//è¯·æ±‚æ•°æ®
 };
 
 NAMESPACE_END(Http)

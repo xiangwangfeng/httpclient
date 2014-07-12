@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_header_parser.cpp
- * @brief   HttpÍ·½âÎöÀà
+ * @brief   Httpå¤´è§£æç±»
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-4-24
  * @website www.xiangwangfeng.com
@@ -30,7 +30,7 @@ void	HttpHeaderParser::parseHeader()
 
 void	HttpHeaderParser::parseHttpCode()
 {
-	//Õı³£HTTPÍ·ÖĞ µÚ9-11Î»ÎªHTTP×´Ì¬Âë
+	//æ­£å¸¸HTTPå¤´ä¸­ ç¬¬9-11ä½ä¸ºHTTPçŠ¶æ€ç 
 	size_t lenght	=	_header.length();
 	if (lenght	>=	12)
 	{

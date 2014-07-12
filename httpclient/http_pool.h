@@ -1,6 +1,6 @@
-/**
+ï»¿/**
  * @file    http_pool.h
- * @brief   Http´«Êä³Ø
+ * @brief   Httpä¼ è¾“æ± 
  * @author  xiangwangfeng <xiangwangfeng@gmail.com>
  * @data	2011-7-6
  * @website www.xiangwangfeng.com
@@ -40,7 +40,7 @@ public:
 	static HttpPool*	getInstance();
 	static void			freeInstance();
 	
-	//Òì²½µ÷ÓÃHTTP´«Êä£¬Íâ²¿±ØĞë×Ô¼º¿ØÖÆhttp_requestºÍdelegateµÄÉú´æÆÚ
+	//å¼‚æ­¥è°ƒç”¨HTTPä¼ è¾“ï¼Œå¤–éƒ¨å¿…é¡»è‡ªå·±æ§åˆ¶http_requestå’Œdelegateçš„ç”Ÿå­˜æœŸ
 	void				postRequest(HttpRequest* http_request,IAsyncHttpDelegate* delegate);
 private:
 	HttpPool();
@@ -49,12 +49,12 @@ private:
 	HttpWorkItem*	getWork();
 	std::string		genThreadName(int index);
 private:
-	std::vector<HttpThread*>	_http_threads;		//Ïß³ÌÁĞ±í
-	std::list<HttpWorkItem*>	_http_work_list;	//¹¤×÷¶ÔÏó
-	static	HttpPool*			_pool;				//¾²Ì¬³Ø¶ÔÏó
-	void*						_exit_event;		//ÍË³öÊÂ¼ş
-	void*						_work_semaphore;	//¹¤×÷ĞÅºÅÁ¿
-	Util::Lock*					_work_lock;			//Ïß³Ì³Ø¶ÓÁĞµÄËø
+	std::vector<HttpThread*>	_http_threads;		//çº¿ç¨‹åˆ—è¡¨
+	std::list<HttpWorkItem*>	_http_work_list;	//å·¥ä½œå¯¹è±¡
+	static	HttpPool*			_pool;				//é™æ€æ± å¯¹è±¡
+	void*						_exit_event;		//é€€å‡ºäº‹ä»¶
+	void*						_work_semaphore;	//å·¥ä½œä¿¡å·é‡
+	Util::Lock*					_work_lock;			//çº¿ç¨‹æ± é˜Ÿåˆ—çš„é”
 	friend	class	HttpThread;
 };
 

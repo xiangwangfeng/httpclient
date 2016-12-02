@@ -21,7 +21,7 @@ public:
 public:
 	bool	connect(const std::string& remote_host_name,
 					int remote_port_number,
-					int timeout = 3000);
+					int timeout = 30000);
 
 	bool	isConnected() const	{return _connected;}
 
